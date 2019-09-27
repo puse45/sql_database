@@ -1,1 +1,0 @@
-/usr/bin/c++  -g -D_DEBUG -D_DRAWGI -Wno-deprecated-declarations   CMakeFiles/Database.dir/main.cpp.o CMakeFiles/Database.dir/Database/cpp/database.cpp.o CMakeFiles/Database.dir/utility/createfile.cpp.o  -o ../Debug/Database -lboost_system -lboost_filesystem -lsqlite3 
