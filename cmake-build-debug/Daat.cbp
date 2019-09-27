@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Daat"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cpprestsdk\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/viscan/CLionProjects/test/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/viscan/CLionProjects/test/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/viscan/CLionProjects/test/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Daat">
+				<Option output="/home/viscan/CLionProjects/test/Debug/Daat" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/viscan/CLionProjects/test/cmake-build-debug/../Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/viscan/CLionProjects/test/cmake-build-debug"/>
+					<Add directory="/home/viscan/CLionProjects/test"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 Daat"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Daat/fast">
+				<Option output="/home/viscan/CLionProjects/test/Debug/Daat" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/viscan/CLionProjects/test/cmake-build-debug/../Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/viscan/CLionProjects/test/cmake-build-debug"/>
+					<Add directory="/home/viscan/CLionProjects/test"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 Daat/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/viscan/CLionProjects/test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/viscan/CLionProjects/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/viscan/CLionProjects/test/../../../../usr/local/lib/cpprestsdk/cpprestsdk-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cpprestsdk\"/>
+		</Unit>
+		<Unit filename="/home/viscan/CLionProjects/test/../../../../usr/local/lib/cpprestsdk/cpprestsdk-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cpprestsdk\"/>
+		</Unit>
+		<Unit filename="/home/viscan/CLionProjects/test/../../../../usr/local/lib/cpprestsdk/cpprestsdk-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cpprestsdk\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
