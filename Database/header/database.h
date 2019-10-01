@@ -18,13 +18,14 @@ public:
     std::string getDb();
     bool setDb();
     const char * createTable(const std::string table);
-    const std::string insert(const std::string table, std::vector<std::string> colomns, std::vector<std::string> values);
-    const std::string select(const std::string table, const std::vector<std::string> colomns, const std::vector<std::string> where, const std::vector<std::string> values);
-    const std::string update(const std::string table, const std::vector<std::string> colomns, const std::vector<std::string> where, const std::vector<std::string> values);
-    const std::string del(const std::string table, const std::vector<std::string> where, const std::vector<std::string> values);
+    const std::string insert(const std::string table, std::vector<std::string>& colomns, std::vector<std::string>& values);
+    std::string select(const std::string table,std::vector<std::string> colomns,std::vector<std::string> where);
+    const std::string update(const std::string table,std::vector<std::string> colomns,std::vector<std::string> where);
+    const std::string del(const std::string table,std::vector<std::string> where);
 private:
     sqlite3* DB;
     const bool connectDb();
+    static int callback(void *data, int argc, char **argv, char **azColName);
 
 public:
     const char* m_host;
@@ -35,7 +36,7 @@ public:
 private:
     std::vector<std::string>::iterator m_colNameItr;
     std::vector<std::string>::iterator m_valueItr;
-//    std::vector<std::string> m_sql;
+    std::vector<std::string> colomns ={"*"};
     std::string m_sql;
     char* m_messaggeError = nullptr;
     bool m_creation_status = false;

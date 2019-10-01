@@ -65,14 +65,64 @@ const char * Database::createTable(const std::string table) {
     return (0);
 }
 
-const std::string Database::select(const std::string table, const std::vector<std::string> colomns,
-                                   const std::vector<std::string> where, const std::vector<std::string> values)
+std::string Database::select(const std::string table, std::vector<std::string> colomns,
+                             std::vector<std::string> where)
 {
+    char *zErrMsg = 0;
+    int exit = 0;
+    exit = sqlite3_open(database, &DB);
+    const char* data = "Callback function called";
+    bool first= false;
+    m_sql = "SELECT ";
+    if(!colomns.empty()) {
+        for (m_colNameItr = colomns.begin(); m_colNameItr < colomns.end(); m_colNameItr++) {
+            if (first) {
+                m_sql += ',';
+            }
+            m_sql += *m_colNameItr;
+            first = true;
+        };
+    } else{
+        m_sql +='*';
+    }
+    m_sql += " FROM ";
+    m_sql += table;
 
-    std::cout<<"Select"<<std::endl;
+    first = false;
+    if(!where.empty()){
+        m_sql += " WHERE ";
+        for (m_valueItr = where.begin(); m_valueItr < where.end(); m_valueItr++) {
+            if (first) {
+                m_sql += "AND";
+            }
+            m_sql +=*m_valueItr;
+            first = true;
+        };
+    }
+    m_sql += ";";
+
+    std::cout << m_sql<<std::endl;
+
+
+    if (exit) {
+        std::cerr << "Error open DB " << sqlite3_errmsg(DB) << std::endl;
+    }
+    else
+        std::cout << "Opened Database Successfully!" << std::endl;
+
+    int rc = sqlite3_exec(DB, m_sql.c_str(), callback, (void*)data, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+        std::cerr << "Error SELECT" << std::endl;
+    else {
+        std::cout << "Operation OK!" << std::endl;
+    }
+
+    sqlite3_close(DB);
 }
 
-const std::string Database::insert(const std::string table,std::vector<std::string> colomns, std::vector<std::string> values)
+const std::string Database::insert(const std::string table, std::vector<std::string> &colomns,
+                                   std::vector<std::string> &values)
 {
     m_messaggeError= nullptr;
     bool first= false;
@@ -102,7 +152,6 @@ const std::string Database::insert(const std::string table,std::vector<std::stri
         };
         m_sql += ");";
 
-        std::cout << m_sql << std::endl;
         exit = sqlite3_exec(DB, m_sql.c_str(), NULL, 0, &m_messaggeError);
         if (exit != SQLITE_OK) {
             std::cerr << "Error Insert" << std::endl;
@@ -110,17 +159,90 @@ const std::string Database::insert(const std::string table,std::vector<std::stri
         } else
             std::cout << "Records created Successfully!" << std::endl;
 
-
+    sqlite3_close(DB);
 }
 
-const std::string Database::update(const std::string, const std::vector<std::string> colomns,
-                                   const std::vector<std::string> where, const std::vector<std::string> values)
+const std::string Database::update(const std::string table,std::vector<std::string> colomns,std::vector<std::string> where)
 {
-    std::cout<<"Update"<<std::endl;
+    char *zErrMsg = 0;
+    int exit = 0;
+    exit = sqlite3_open(database, &DB);
+    const char* data = "Callback function called";
+    bool first= false;
+
+    /* Create merged SQL statement */
+    m_sql = "UPDATE ";
+    m_sql += table;
+    m_sql += " SET ";
+    if(!colomns.empty()) {
+        for (m_colNameItr = colomns.begin(); m_colNameItr < colomns.end(); m_colNameItr++) {
+
+            if (first) {
+                m_sql += ", ";
+            }
+            m_sql += *m_colNameItr;
+            first = true;
+        };
+    }
+    m_sql += " WHERE ";
+    first = false;
+    for (m_valueItr = where.begin(); m_valueItr < where.end(); m_valueItr++) {
+        if (first) {
+            m_sql += ", ";
+        }
+        m_sql += *m_valueItr;
+        first = true;
+    };
+
+    /* Execute SQL statement */
+    int rc = sqlite3_exec(DB, m_sql.c_str(), callback, (void*)data, &zErrMsg);
+    if( rc != SQLITE_OK ) {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        fprintf(stdout, "Operation done successfully\n");
+    }
+    sqlite3_close(DB);
 }
 
-const std::string Database::del(const std::string, const std::vector<std::string> where,
-                                const std::vector<std::string> values)
+const std::string Database::del(const std::string table, std::vector<std::string> where)
 {
-    std::cout<<"Delete"<<std::endl;
+    char *zErrMsg = 0;
+    int exit = 0;
+    exit = sqlite3_open(database, &DB);
+    const char* data = "Callback function called";
+    bool first= false;
+
+    /* Create merged SQL statement */
+    m_sql = "DELETE from ";
+    m_sql += table;
+    m_sql += " WHERE ";
+    for (m_valueItr = where.begin(); m_valueItr < where.end(); m_valueItr++) {
+        if (first) {
+            m_sql += ", ";
+        }
+        m_sql += *m_valueItr;
+        first = true;
+    };
+
+    /* Execute SQL statement */
+    int rc = sqlite3_exec(DB, m_sql.c_str(), callback, (void*)data, &zErrMsg);
+    if( rc != SQLITE_OK ) {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        fprintf(stdout, "Operation done successfully\n");
+    }
+    sqlite3_close(DB);
+}
+
+
+int Database::callback(void *data, int argc, char **argv, char **azColName){
+    int i;
+    fprintf(stderr, "%s: ", (const char*)data);
+    for(i = 0; i<argc; i++){
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
 }
